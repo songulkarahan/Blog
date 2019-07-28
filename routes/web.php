@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/feed', 'HomeController@feed')->name('feed');
 Route::get('/havadurumu', 'HomeController@showWeather')->name('showWeather');
 
 Route::get('/blogs' , 'BlogController@index')->name('blogs.index');

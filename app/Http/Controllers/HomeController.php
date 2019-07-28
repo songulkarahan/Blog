@@ -35,6 +35,15 @@ class HomeController extends Controller
         return view('home' , compact('blogs'));
     }
 
+
+    public function index(Request $request)
+    {
+        $userIdToShowBlogs = $request->user->followees()->pluck('id')->toArray();
+        $userIdToShowBlogs[] = $request->user()->id;
+        $blogs = Blog::whereIn('user_id', $userIdToShowBlogs)->latest()->get();
+        //compact('articles')
+        return view('feed' , compact('blogs'));
+    }
 // Language of data (try your own language here!):
 
 
